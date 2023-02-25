@@ -38,6 +38,14 @@ mvn package -DskipTests
 '''
 }
 }
+stage('SonarScan'){
+
+   sh '''
+   mvn clean verify sonar:sonar -Dsonar.projectKey=myproject -Dsonar.host.url=http://23.20.195.244:9002 -Dsonar.login=sqp_50f3512e10a6e279f7b2e8265c59673eb6ed5fc0
+   
+   '''
+
+}
 
 stage('archive'){
 steps{
@@ -45,7 +53,7 @@ archiveArtifacts artifacts: '**/*.war'
 }
 }
 
-stage('Deploy'){
+/*stage('Deploy'){
 steps{
 sh '''
 
@@ -54,6 +62,6 @@ sh '''
     docker run -d -p 5555:8080 mywebapp
 '''
 }
-}
+}*/
 }
 }
