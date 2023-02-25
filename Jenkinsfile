@@ -41,7 +41,7 @@ mvn package -DskipTests
 stage('SonarScan'){
 
    sh '''
-   mvn clean verify sonar:sonar -Dsonar.projectKey=myproject -Dsonar.host.url=http://23.20.195.244:9002 -Dsonar.login=sqp_50f3512e10a6e279f7b2e8265c59673eb6ed5fc0
+   mvn clean verify sonar:sonar -Dsonar.projectKey=myproject -Dsonar.host.url=http://54.221.178.233:5678 -Dsonar.login=sqp_1b996ebadcd4ad166f710e565364cc7cf5b7e5fb
    
    '''
 
