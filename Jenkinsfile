@@ -56,11 +56,6 @@ steps{
  '''
 }
 }
-/*stage('archive'){
-steps{
-archiveArtifacts artifacts: '**/*.war'
-}
-}*/
 
 /*stage('Deploy'){
 steps{
