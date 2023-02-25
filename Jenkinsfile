@@ -39,12 +39,13 @@ mvn package -DskipTests
 }
 }
 stage('SonarScan'){
+    steps{
 
    sh '''
    mvn clean verify sonar:sonar -Dsonar.projectKey=myproject -Dsonar.host.url=http://54.221.178.233:5678 -Dsonar.login=sqp_1b996ebadcd4ad166f710e565364cc7cf5b7e5fb
    
    '''
-
+    }
 }
 
 stage('archive'){
