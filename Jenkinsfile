@@ -52,7 +52,7 @@ stage('Nexusupload'){
 steps{
  sh '''
    cd /var/jenkins_home/workspace/sonar/target
-   curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/sonar/target/*.war http://54.221.178.233:8081/nexus/content/repositories/myrepo
+   curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/sonar/target/*.war http://54.198.177.118:8081/nexus/content/repositories/myrepo
  '''
 }
 }
