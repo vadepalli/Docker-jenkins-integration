@@ -34,7 +34,7 @@ node {
 	stage('SendingToNexus'){
 	
 	sh '''
-	  cd /var/jenkins_home/workspace/myproject/target
+	  
           curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/myproject/target/*.war http://44.207.3.149:8081/nexus/content/repositories/myproject/
 	'''
 	
