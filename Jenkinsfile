@@ -23,5 +23,13 @@ node {
 	
 	
 	}
+       stage('SonarCoverageResults'){
+	
+	sh '''
+	  mvn clean verify sonar:sonar -Dsonar.projectKey=mysonarproject -Dsonar.host.url=http://44.207.3.149:5678 -Dsonar.login=sqp_37b237fc93cce9ff22f7c425b0f777790f99d514
+	'''
+	
+	
+	}
    
   }
