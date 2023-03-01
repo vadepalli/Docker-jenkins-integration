@@ -1,71 +1,62 @@
-pipeline{
+node {
+    def app
 
-agent any
-stages{
-/* stage('initialize'){
-    steps{
-checkout scm
-}
-} */
+    stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
 
-stage('compile'){
-    steps{
- sh '''
-mvn compile
-'''
-}
-}
-
-
-/*stage('unittest'){
-  steps{  
-sh '''
-mvn test
-'''
-}  
-  
-
-post{
-        always{
-             junit testResults:"target/surefire-reports/*.xml"
-        }
+        checkout scm
     }
-}*/
-stage('build'){
-    steps{
-sh '''
-mvn package -DskipTests
-'''
-}
-}
-stage('SonarScan'){
-    steps{
-
-   sh '''
-   mvn clean verify sonar:sonar -Dsonar.projectKey=myproject -Dsonar.host.url=http://54.198.177.118:5678 -Dsonar.login=sqp_1b996ebadcd4ad166f710e565364cc7cf5b7e5fb
+	stage('compile'){
+	
+	sh '''
+	  mvn compile
+	'''
+	
+	
+	}
+	
+	stage('package'){
+	
+	sh '''
+	  mvn package
+	'''
+	
+	
+	}
    
-   '''
-    }
-}
+   
 
-stage('Nexusupload'){
-steps{
- sh '''
-   cd /var/jenkins_home/workspace/sonar/target
-   curl -v -u admin:admin123 --upload-file /var/jenkins_home/workspace/sonar/target/*.war http://54.198.177.118:8081/nexus/content/repositories/myrepo
- '''
-}
-}
+    /*stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
 
-/*stage('Deploy'){
-steps{
-sh '''
+        app = docker.build("mannam786/mydynamicapp")
+    }*/
 
     
-    docker build -t mywebapp .
-    docker run -d -p 5555:8080 mywebapp
-'''
-}
-}*/
-}
+
+    /*stage('Push image') {
+        /* Finally, we'll push the image with two tags:
+         * First, the incremental build number from Jenkins
+         * Second, the 'latest' tag.
+         * Pushing multiple tags is cheap, as all the layers are reused. */
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+      
+             }
+        
+        }*/
+        
+        
+   /*stage('RunningImagesInDocker ') {
+       sh '''
+         docker pull mannam786/webpage:latest
+         docker run -d -p 2222:80 mannam786/webpage
+       
+       '''
+         }*/
+        
+  
+   
 }
