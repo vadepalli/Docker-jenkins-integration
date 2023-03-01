@@ -40,7 +40,12 @@ node {
 	
 	
 	}
-       
+       stage('DockerBuild'){
+	
+	app = docker.build("mannam786/mydynamicapp")
+	
+	
+	}
        
    
   }
