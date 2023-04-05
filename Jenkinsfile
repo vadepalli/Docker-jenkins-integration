@@ -59,7 +59,7 @@ node {
 	stage('Runnning'){
 	
 	sh '''
-	  docker run -d -v 6666:80 mannam786/mydynamicapp
+	  docker run -d -v 6666:8080 mannam786/mydynamicapp
 	  
 
 	'''
