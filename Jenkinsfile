@@ -23,7 +23,7 @@ node {
 	
 	
 	}
-       stage('SonarCoverageResults'){
+       /*stage('SonarCoverageResults'){
 	
 	sh '''
 	  mvn clean verify sonar:sonar -Dsonar.projectKey=mysonarproject -Dsonar.host.url=http://44.207.3.149:5678 -Dsonar.login=sqp_37b237fc93cce9ff22f7c425b0f777790f99d514
@@ -39,7 +39,7 @@ node {
 	'''
 	
 	
-	}
+	}*/
        stage('DockerBuild'){
 	
 	app = docker.build("mannam786/mydynamicapp")
@@ -56,11 +56,11 @@ node {
 	
 	
 	}
-	stage('ConnectingToEKS'){
+	stage('Runnning'){
 	
 	sh '''
-	  aws eks update-kubeconfig --region us-east-1 --name sample-ekscluster
-	  kubectl get nodes
+	  docker run -d -v 6666:80 mannam786/mydynamicapp
+	  
 
 	'''
 	
