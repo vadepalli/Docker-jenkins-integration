@@ -1,6 +1,6 @@
 FROM tomcat:8.0-alpine
 
-MAINTAINER Hari harichowdary.java@gmail.com
+MAINTAINER author  author@gmail.com
 
 
 
