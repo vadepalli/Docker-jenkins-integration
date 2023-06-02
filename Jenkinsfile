@@ -30,17 +30,17 @@ node {
 	'''
 	
 	
-	}
+	}*/
 	stage('SendingToNexus'){
 	
 	sh '''
 	  
-          curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/myproject/target/*.war http://44.207.3.149:8081/nexus/content/repositories/myproject/
+          curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/myproject/target/*.war http://3.80.54.111:8081/nexus/content/repositories/myapp
 	'''
 	
 	
-	}*/
-       stage('DockerBuild'){
+	}
+    /*stage('DockerBuild'){
 	
 	app = docker.build("mannam786/mydynamicapp")
 	
@@ -65,6 +65,6 @@ node {
 	'''
 	
 	
-	}
+	}*/
    
   }
