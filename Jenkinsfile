@@ -35,7 +35,7 @@ node {
 	
 	sh '''
 	  
-          curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/myproject/target/*.war http://3.80.54.111:8081/nexus/content/repositories/myapp
+          curl -v -u admin:admin123 --upload-file /var/lib/jenkins/workspace/myproject/target/*.war  http://3.80.54.111:8081/nexus/content/repositories/mycentral
 	'''
 	
 	
