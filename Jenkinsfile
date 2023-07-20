@@ -30,7 +30,7 @@ node {
 	'''
 	
 	
-	}*/
+	}
 	stage('SendingToNexus'){
 	
 	sh '''
@@ -39,8 +39,8 @@ node {
 	'''
 	
 	
-	}
-    /*stage('DockerBuild'){
+	}*/
+    stage('DockerBuild'){
 	
 	app = docker.build("mannam786/mydynamicapp")
 	
@@ -65,6 +65,6 @@ node {
 	'''
 	
 	
-	}*/
+	}
    
   }
